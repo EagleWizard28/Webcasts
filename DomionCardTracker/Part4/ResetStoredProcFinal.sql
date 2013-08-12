@@ -18,6 +18,7 @@ BEGIN
 
 	DBCC CHECKIDENT('CardSet', RESEED, 0);
 	DBCC CHECKIDENT('Category', RESEED, 0);
+	DBCC CHECKIDENT('CardModifier', RESEED, 0);
 	DBCC CHECKIDENT('ModifierType', RESEED, 0);
 	DBCC CHECKIDENT('Card', RESEED, 0);
 
@@ -50,6 +51,6 @@ BEGIN
 
 	insert into CardCategory (CardID, CategoryID)
 	values (1, 1), -- copper treasure
-	(2, 2), -- witch action
+	(2, 3), -- witch action
 	(2, 4); -- witch attack
 END
