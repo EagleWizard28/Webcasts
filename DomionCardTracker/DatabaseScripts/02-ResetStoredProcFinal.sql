@@ -40,9 +40,9 @@ BEGIN
 	('+ Coins'), -- id 4
 	('Effect'); -- id 5
 
-	insert into [card] (CardSetID, CardTitle, ImagePath)
-	values (1, 'Copper', 'copper.jpg'), -- id 1
-		(1, 'Witch', 'witch.jpg'); -- id 2
+	insert into [card] (CardSetID, CardTitle, ImagePath, CardCost)
+	values (1, 'Copper', 'copper.jpg', 0), -- id 1
+		(1, 'Witch', 'witch.jpg', 5); -- id 2
 
 	insert into CardModifier (CardID, ModifierTypeID, ModifierValue, InstructionText)
 	values (1, 4, 1, null), -- copper, 1 coin
