@@ -4,7 +4,7 @@
       <groupChildrenDescriptors>
         <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="0" w="961" h="633" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="16">
           <controlProperties>
-            <text>Dominion%20Card%20Tracker%0Ahttp%3A//www.swcguild.com/dominion/card/details/1</text>
+            <text>Dominion%20Card%20Tracker%0Ahttp%3A//www.swcguild.com/dominion/browser/list/base</text>
           </controlProperties>
         </control>
         <control controlID="1" controlTypeID="com.balsamiq.mockups::Canvas" x="0" y="72" w="960" h="41" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="16"/>
@@ -105,6 +105,11 @@
         <control controlID="30" controlTypeID="com.balsamiq.mockups::Link" x="195" y="279" w="-1" h="-1" measuredW="39" measuredH="19" zOrder="12" locked="false" isInGroup="16">
           <controlProperties>
             <text>Village</text>
+          </controlProperties>
+        </control>
+        <control controlID="31" controlTypeID="com.balsamiq.mockups::Label" x="792" y="82" w="87" h="-1" measuredW="83" measuredH="21" zOrder="13" locked="false" isInGroup="16">
+          <controlProperties>
+            <text>Welcome%2C%20Eric</text>
           </controlProperties>
         </control>
       </groupChildrenDescriptors>
