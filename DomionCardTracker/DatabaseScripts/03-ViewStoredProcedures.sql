@@ -21,13 +21,5 @@ BEGIN
 		INNER JOIN CardCategory cc ON c.CategoryID = cc.CategoryID
 	WHERE cc.CardID = @CardID;
 
-	SELECT  CardModifierID
-		   ,CardID
-		   ,mt.ModifierTypeID
-		   ,ModifierValue
-		   ,InstructionText
-		   ,ModifierTypeName
-	FROM CardModifier cm
-		INNER JOIN ModifierType mt on cm.ModifierTypeID = mt.ModifierTypeID
-	WHERE CardID = @CardID;
+	exec CardModifierSelectByCardID @CardID;
 END
