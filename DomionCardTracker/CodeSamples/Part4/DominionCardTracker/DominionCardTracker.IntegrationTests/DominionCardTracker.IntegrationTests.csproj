@@ -48,8 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CardModifierTests.cs" />
     <Compile Include="CardSetTests.cs" />
+    <Compile Include="CardTests.cs" />
+    <Compile Include="CategoryTests.cs" />
     <Compile Include="DatabaseResetRepository.cs" />
+    <Compile Include="ModifierTypeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

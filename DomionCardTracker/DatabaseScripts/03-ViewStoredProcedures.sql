@@ -1,3 +1,5 @@
+USE DominionCardTracker
+GO
 
 CREATE PROCEDURE CardSelectView (
 	@CardID int

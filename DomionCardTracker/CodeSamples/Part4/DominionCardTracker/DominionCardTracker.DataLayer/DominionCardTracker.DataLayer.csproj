@@ -47,7 +47,11 @@
   <ItemGroup>
     <Compile Include="ConfigurationSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CardModifierRepository.cs" />
+    <Compile Include="Repositories\CardRepository.cs" />
     <Compile Include="Repositories\CardSetRepository.cs" />
+    <Compile Include="Repositories\CategoryRepository.cs" />
+    <Compile Include="Repositories\ModifierTypeRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace DominionCardTracker.IntegrationTests
 {
     [TestFixture]
-    public class CardSetTests
+    public class CategoryTests
     {
         [SetUp]
         public void Init()
@@ -17,28 +17,28 @@ namespace DominionCardTracker.IntegrationTests
         [Test]
         public void SelectAllTest()
         {
-            var repo = new CardSetRepository();
+            var repo = new CategoryRepository();
             var results = repo.SelectAll();
 
-            Assert.AreEqual(2, results.Count);
+            Assert.AreEqual(5, results.Count);
         }
 
         [Test]
         public void InsertTest()
         {
-            var repo = new CardSetRepository();
-            var newCardSet = new CardSet();
-            newCardSet.CardSetName = "Seaside";
+            var repo = new CategoryRepository();
+            var newCategory = new Category();
+            newCategory.CategoryName = "New";
 
-            repo.Insert(newCardSet);
+            repo.Insert(newCategory);
 
-            Assert.AreEqual(3, repo.SelectAll().Count);
+            Assert.AreEqual(6, repo.SelectAll().Count);
         }
 
         [Test]
         public void SelectTest()
         {
-            var repo = new CardSetRepository();
+            var repo = new CategoryRepository();
             var cardSet = repo.Select(1);
 
             Assert.IsNotNull(cardSet);
@@ -47,22 +47,22 @@ namespace DominionCardTracker.IntegrationTests
         [Test]
         public void UpdateTest()
         {
-            var repo = new CardSetRepository();
-            var cardSet = new CardSet { CardSetID = 1, CardSetName = "Updated" };
+            var repo = new CategoryRepository();
+            var cardSet = new Category { CategoryID = 1, CategoryName = "Updated" };
             repo.Update(cardSet);
 
             var updatedSet = repo.Select(1);
-            Assert.AreEqual("Updated", updatedSet.CardSetName);
+            Assert.AreEqual("Updated", updatedSet.CategoryName);
         }
 
         [Test]
         public void DeleteTest()
         {
-            var repo = new CardSetRepository();
+            var repo = new CategoryRepository();
             repo.Delete(2);
 
             var allSets = repo.SelectAll();
-            Assert.AreEqual(1, allSets.Count);
+            Assert.AreEqual(4, allSets.Count);
         }
     }
 }

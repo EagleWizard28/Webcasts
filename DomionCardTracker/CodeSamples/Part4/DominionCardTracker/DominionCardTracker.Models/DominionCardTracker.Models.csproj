@@ -40,7 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tables\Card.cs" />
+    <Compile Include="Tables\CardModifier.cs" />
     <Compile Include="Tables\CardSet.cs" />
+    <Compile Include="Tables\Category.cs" />
+    <Compile Include="Tables\ModifierType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
