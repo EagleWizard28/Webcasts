@@ -1,0 +1,1 @@
+Each code sample is arranged such that the start of the webcast is in the Part# folder that is the same as the video.  So Part 3 contains the code at the start of the part3 video.  If you want to see the finished product, grab the next folder's code.
