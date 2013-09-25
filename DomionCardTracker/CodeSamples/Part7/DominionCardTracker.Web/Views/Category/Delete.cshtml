@@ -1,0 +1,19 @@
+﻿@model DominionCardTracker.Models.Tables.Category
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="row">
+    @using (Html.BeginForm("Delete", "Category", FormMethod.Post, new {@class = "span4"}))
+    {
+        @Html.HiddenFor(m=>m.CategoryID)
+        <label>Delete the category @Model.CategoryName?</label>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Delete</button>
+                @Html.ActionLink("Cancel", "Index", "Category", null, new{@class="btn"})
+            </div>
+    }
+
+</div>

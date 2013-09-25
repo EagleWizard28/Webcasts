@@ -1,0 +1,23 @@
+﻿@model DominionCardTracker.Models.Tables.ModifierType
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="row">
+    @using (Html.BeginForm("Create", "ModifierType", FormMethod.Post, new {@class = "span4"}))
+    {
+        <fieldset>
+            <legend>Create Modifier Type</legend>
+            <div class="control-group">
+                <label>Modifier Type Name</label>
+                @Html.TextBoxFor(m=>m.ModifierTypeName, new{placeholder="enter set name"})
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                @Html.ActionLink("Cancel", "Index", "ModifierType", null, new{@class="btn"})
+            </div>
+        </fieldset>
+    }
+
+</div>

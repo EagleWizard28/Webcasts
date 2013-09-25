@@ -1,0 +1,45 @@
+﻿@model IEnumerable<DominionCardTracker.Models.Tables.Category>
+
+@{
+    ViewBag.Title = "Category List";
+}
+
+<div class="row">
+    <div class="span12">
+        <h2>Card Set List</h2>
+        @if (TempData.ContainsKey("Message"))
+        {
+            <p class="text-success">@TempData["Message"].ToString()</p>
+        }
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="span12">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CategoryName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.CategoryID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.CategoryID })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

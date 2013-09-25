@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+	<div class="hero-unit">
+		<h1>Dominion Card Tracker</h1>
+		<p>This is a sample application to track Dominion cards created by the <a href="http://www.swcguild.com" target="_blank">Software Craftsmanship Guild</a>, if you attend here, you can learn to build data driven applications like this!</p>
+		<p>@Html.ActionLink("Browse Cards", "Browse", "Cards", null, new{@class="btn btn-primary btn-large"})</p>
+	</div>
+
+      <div class="row">
+        <div class="span4">
+          <h2>Card Randomizer</h2>
+          <p>Generate a random list of 10 cards to play a game with</p>
+          <p>@Html.ActionLink("Randomizer »", "Random","Cards", null, new{@class="btn"})</p>
+        </div>
+        <div class="span4">
+          <h2>About Dominion</h2>
+          <p>Click the button below to go to the Dominion web site</p>
+          <p><a class="btn" href="http://riograndegames.com/Game/278-Dominion" target="_blank">Visit Site &raquo;</a></p>
+       </div>
+        <div class="span4">
+          <h2>Strategy</h2>
+          <p>Check out this site for Dominion strategy</p>
+          <p><a class="btn" href="http://dominionstrategy.com/" target="_blank">Visit Site &raquo;</a></p>
+        </div>
+      </div>

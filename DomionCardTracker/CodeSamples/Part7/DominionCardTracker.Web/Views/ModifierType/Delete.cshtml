@@ -1,0 +1,19 @@
+﻿@model DominionCardTracker.Models.Tables.ModifierType
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="row">
+    @using (Html.BeginForm("Delete", "ModifierType", FormMethod.Post, new {@class = "span4"}))
+    {
+        @Html.HiddenFor(m=>m.ModifierTypeID)
+        <label>Delete the Modifier Type @Model.ModifierTypeName?</label>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Delete</button>
+                @Html.ActionLink("Cancel", "Index", "ModifierType", null, new{@class="btn"})
+            </div>
+    }
+
+</div>

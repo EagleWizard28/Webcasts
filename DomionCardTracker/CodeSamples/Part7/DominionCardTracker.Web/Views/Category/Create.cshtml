@@ -1,0 +1,22 @@
+﻿@model DominionCardTracker.Models.Tables.Category
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="row">
+    @using (Html.BeginForm("Create", "Category", FormMethod.Post, new {@class = "span4"}))
+    {
+        <fieldset>
+            <legend>Create Category</legend>
+            <div class="control-group">
+                <label>Category Name</label>
+                @Html.TextBoxFor(m=>m.CategoryName, new{placeholder="enter category name"})
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                @Html.ActionLink("Cancel", "Index", "Category", null, new{@class="btn"})
+            </div>
+        </fieldset>
+    }
+</div>
