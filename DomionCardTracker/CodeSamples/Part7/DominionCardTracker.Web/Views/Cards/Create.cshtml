@@ -1,0 +1,34 @@
+﻿@model DominionCardTracker.Web.Models.CardCreateModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="row">
+    @using (Html.BeginForm("Create", "Cards", FormMethod.Post, new {@class = "span4"}))
+    {
+        <fieldset>
+            <legend>Create Card</legend>
+            <div class="control-group">
+                <label>Card Name</label>
+                @Html.TextBoxFor(m=>m.NewCard.CardTitle, new{placeholder="Enter card name"})
+            </div>
+            <div class="control-group">
+                <label>Cost</label>
+                @Html.TextBoxFor(m=>m.NewCard.CardCost, new{placeholder="Enter card cost"})
+            </div>            
+            <div class="control-group">
+                <label>Image</label>
+                @Html.TextBoxFor(m=>m.NewCard.ImagePath, new{placeholder="Enter image path"})
+            </div>
+            <div class="control-group">
+                <label>Card Set</label>
+                @Html.DropDownListFor(m=>m.NewCard.CardSetID, Model.CardSetOptions)
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                @Html.ActionLink("Cancel", "Index", "Cards", null, new{@class="btn"})
+            </div>
+        </fieldset>
+    }
+</div>

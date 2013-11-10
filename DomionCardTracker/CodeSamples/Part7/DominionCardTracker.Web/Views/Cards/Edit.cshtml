@@ -1,0 +1,144 @@
+﻿@model DominionCardTracker.Web.Models.CardEditModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="row">
+    @using (Html.BeginForm("Edit", "Cards", FormMethod.Post, new { @class = "span4" }))
+    {
+        <fieldset>
+            <legend>Create Card</legend>
+            @Html.HiddenFor(m => m.Card.CardID)
+            <div class="control-group">
+                <label>Card Name</label>
+                @Html.TextBoxFor(m => m.Card.CardTitle, new { placeholder = "Enter card name" })
+            </div>
+            <div class="control-group">
+                <label>Cost</label>
+                @Html.TextBoxFor(m => m.Card.CardCost, new { placeholder = "Enter card cost" })
+            </div>
+            <div class="control-group">
+                <label>Image</label>
+                @Html.TextBoxFor(m => m.Card.ImagePath, new { placeholder = "Enter image path" })
+            </div>
+            <div class="control-group">
+                <label>Card Set</label>
+                @Html.DropDownListFor(m => m.Card.CardSetID, Model.CardSetOptions)
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                @Html.ActionLink("Cancel", "Index", "Cards", null, new { @class = "btn" })
+            </div>
+        </fieldset>
+    }
+    <div class="span4 offset1">
+        <fieldset>
+            <legend>Modifiers (<span data-bind="text: modifiers().length"></span>)</legend>
+            <div class="control-group">
+                <label>Modifier Type</label>
+                @Html.DropDownList("ModifierTypeID", Model.CardModifierOptions, new { data_bind = "value: newModifierTypeId" })
+            </div>
+            <div class="control-group">
+                <label>Value</label>
+                <input type="text" placeholder="Numeric Value" data-bind="value: newModifierValue" />
+            </div>
+            <div class="control-group">
+                <label>Instructions</label>
+                <textarea rows="3" data-bind="value: newModifierInstructions"></textarea>
+            </div>
+            <button data-bind="click: addModifier" class="btn">Add</button>
+        </fieldset>
+        <table class="table table-striped table-bordered" style="margin-top: 20px;">
+            <thead>
+                <tr>
+                    <th>Modifier</th>
+                    <th>Value</th>
+                    <th>Instruction Text</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: modifiers">
+                <tr>
+                    <td>
+                        <span data-bind="text: name" /></td>
+                    <td>
+                        <span data-bind="text: value" /></td>
+                    <td>
+                        <span data-bind="text: instructions" /></td>
+                    <td>
+                        <button class="btn" data-bind="click: $root.removeModifier">Remove</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+@section scripts
+{
+    <script src="~/Scripts/knockout-3.0.0.js"></script>
+    <script>
+    // Class to represent a row in the card modifiers grid
+    function CardModifier(id, name, value, instructions) {
+        var self = this;
+        self.id = id;
+        self.name = name;
+        self.value = value;
+        self.instructions = instructions;
+    }
+
+    // Overall viewmodel for this screen, along with initial state
+    function ModifiersViewModel() {
+        var self = this;
+
+        self.cardId = "@Model.Card.CardID";
+            self.newModifierTypeId = ko.observable();
+            self.newModifierValue = ko.observable();
+            self.newModifierInstructions = ko.observable();
+
+            self.modifiers = ko.observableArray([
+                @foreach (var mod in Model.Card.Modifiers)
+                {
+                    <text>new CardModifier("@mod.CardModifierID", "@mod.ModifierTypeName", "@mod.ModifierValue", "@mod.InstructionText"),</text>
+                }
+            ]);
+
+            // Operations
+            self.addModifier = function () {
+                $.ajax("/Cards/AddModifier", {
+                    data: ko.toJSON({
+                        CardID: self.cardId, ModifierTypeID: self.newModifierTypeId,
+                        ModifierValue: self.newModifierValue, InstructionText: self.newModifierInstructions
+                    }),
+                    type: "post", contentType: "application/json",
+                    success: function (result) {
+                        self.modifiers.removeAll();
+                        result.Modifiers.forEach(function (mod) {
+                            self.modifiers.push(new CardModifier(mod.CardModifierID, mod.ModifierTypeName, mod.ModifierValue, mod.InstructionText));
+                        });
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("Status: " + textStatus); alert("Error: " + errorThrown);
+                    }
+                });
+            };
+
+            self.removeModifier = function (modifier) {
+                $.ajax("/Cards/RemoveModifier", {
+                    data: ko.toJSON({ id: modifier.id }),
+                    type: "post", contentType: "application/json",
+                    success: function (result) {
+                        self.modifiers.remove(modifier);
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("Status: " + textStatus); alert("Error: " + errorThrown);
+                    }
+                });
+
+            };
+        }
+
+        ko.applyBindings(new ModifiersViewModel());
+    </script>
+}

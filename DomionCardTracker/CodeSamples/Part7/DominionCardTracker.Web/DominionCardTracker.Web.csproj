@@ -184,6 +184,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CardsController.cs" />
     <Compile Include="Controllers\CardSetController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -193,6 +194,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\CardBrowseModel.cs" />
+    <Compile Include="Models\CardCreateModel.cs" />
+    <Compile Include="Models\CardEditModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -260,34 +264,85 @@
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Images\adventurer.jpg" />
+    <Content Include="Images\ambassador.jpg" />
+    <Content Include="Images\baron.jpg" />
+    <Content Include="Images\bazaar.jpg" />
+    <Content Include="Images\bridge.jpg" />
     <Content Include="Images\bureaucrat.jpg" />
+    <Content Include="Images\caravan.jpg" />
     <Content Include="Images\cellar.jpg" />
     <Content Include="Images\chancellor.jpg" />
     <Content Include="Images\chapel.jpg" />
+    <Content Include="Images\conspirator.jpg" />
     <Content Include="Images\copper.jpg" />
+    <Content Include="Images\coppersmith.jpg" />
     <Content Include="Images\councilroom.jpg" />
+    <Content Include="Images\courtyard.jpg" />
     <Content Include="Images\curse.jpg" />
+    <Content Include="Images\cutpurse.jpg" />
     <Content Include="Images\duchy.jpg" />
+    <Content Include="Images\duke.jpg" />
+    <Content Include="Images\embargo.jpg" />
     <Content Include="Images\estate.jpg" />
+    <Content Include="Images\explorer.jpg" />
     <Content Include="Images\feast.jpg" />
     <Content Include="Images\festival.jpg" />
+    <Content Include="Images\fishingvillage.jpg" />
     <Content Include="Images\gardens.jpg" />
+    <Content Include="Images\ghostship.jpg" />
     <Content Include="Images\gold.jpg" />
+    <Content Include="Images\greathall.jpg" />
+    <Content Include="Images\harem.jpg" />
+    <Content Include="Images\haven.jpg" />
+    <Content Include="Images\ironworks.jpg" />
+    <Content Include="Images\island.jpg" />
     <Content Include="Images\laboratory.jpg" />
     <Content Include="Images\library.jpg" />
+    <Content Include="Images\lighthouse.jpg" />
+    <Content Include="Images\lookout.jpg" />
     <Content Include="Images\market.jpg" />
+    <Content Include="Images\masquerade.jpg" />
+    <Content Include="Images\merchantship.jpg" />
     <Content Include="Images\militia.jpg" />
     <Content Include="Images\mine.jpg" />
+    <Content Include="Images\miningvillage.jpg" />
+    <Content Include="Images\minion.jpg" />
     <Content Include="Images\moat.jpg" />
     <Content Include="Images\moneylender.jpg" />
+    <Content Include="Images\nativevillage.jpg" />
+    <Content Include="Images\navigator.jpg" />
+    <Content Include="Images\nobles.jpg" />
+    <Content Include="Images\outpost.jpg" />
+    <Content Include="Images\pawn.jpg" />
+    <Content Include="Images\pearldiver.jpg" />
+    <Content Include="Images\pirateship.jpg" />
     <Content Include="Images\province.jpg" />
     <Content Include="Images\remodel.jpg" />
+    <Content Include="Images\saboteur.jpg" />
+    <Content Include="Images\salvager.jpg" />
+    <Content Include="Images\scout.jpg" />
+    <Content Include="Images\seahag.jpg" />
+    <Content Include="Images\secretchamber.jpg" />
+    <Content Include="Images\shantytown.jpg" />
     <Content Include="Images\silver.jpg" />
     <Content Include="Images\smithy.jpg" />
+    <Content Include="Images\smugglers.jpg" />
     <Content Include="Images\spy.jpg" />
+    <Content Include="Images\steward.jpg" />
+    <Content Include="Images\swindler.jpg" />
+    <Content Include="Images\tactician.jpg" />
     <Content Include="Images\thief.jpg" />
     <Content Include="Images\throneroom.jpg" />
+    <Content Include="Images\torturer.jpg" />
+    <Content Include="Images\tradingpost.jpg" />
+    <Content Include="Images\treasuremap.jpg" />
+    <Content Include="Images\treasury.jpg" />
+    <Content Include="Images\tribute.jpg" />
+    <Content Include="Images\upgrade.jpg" />
     <Content Include="Images\village.jpg" />
+    <Content Include="Images\warehouse.jpg" />
+    <Content Include="Images\wharf.jpg" />
+    <Content Include="Images\wishingwell.jpg" />
     <Content Include="Images\witch.jpg" />
     <Content Include="Images\woodcutter.jpg" />
     <Content Include="Images\workshop.jpg" />
@@ -305,8 +360,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\knockout-2.2.0.debug.js" />
-    <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\knockout-3.0.0.debug.js" />
+    <Content Include="Scripts\knockout-3.0.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -346,6 +401,9 @@
     <Content Include="Views\ModifierType\Create.cshtml" />
     <Content Include="Views\ModifierType\Delete.cshtml" />
     <Content Include="Views\ModifierType\Edit.cshtml" />
+    <Content Include="Views\Cards\Index.cshtml" />
+    <Content Include="Views\Cards\Create.cshtml" />
+    <Content Include="Views\Cards\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

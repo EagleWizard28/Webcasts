@@ -10,6 +10,7 @@ BEGIN
           ,cs.CardSetID
           ,CardTitle
           ,ImagePath
+		  ,CardCost
 		  ,cs.CardSetName
     FROM [Card] c 
 		INNER JOIN CardSet cs ON c.CardSetID = cs.CardSetID

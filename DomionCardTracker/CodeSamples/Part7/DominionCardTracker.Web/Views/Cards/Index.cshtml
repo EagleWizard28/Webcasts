@@ -1,0 +1,51 @@
+﻿@using DominionCardTracker.Models.Tables
+@model DominionCardTracker.Web.Models.CardBrowseModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="span2">
+        <ul class="nav nav-list">
+            <li class="nav-header">Card Sets</li>
+            @foreach (var set in Model.CardSets)
+            {
+                <li>@Html.ActionLink(set.CardSetName, "Index", "Cards", new{id=set.CardSetID}, null)</li>
+            }
+        </ul>
+    </div>
+    <div class="span10">
+        <div>@Html.ActionLink("Add new card", "Create", "Cards")</div>
+        @if (Model.SelectedCards == null)
+        {
+            <p>Please select a card set in the left hand menu</p>
+        }
+        else
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Card Name</th>
+                        <th>Cost</th>
+                        <th>Image</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var card in Model.SelectedCards)
+                    {
+                        <tr>
+                            <td>@card.CardTitle</td>
+                            <td>@card.CardCost</td>
+                            <td>@card.ImagePath</td>
+                            <td>@Html.ActionLink("Edit", "Edit", "Cards", new{id=card.CardID}, null) |
+                                @Html.ActionLink("Delete", "Delete", "Cards", new{id=card.CardID}, null)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>

@@ -19,7 +19,7 @@ namespace DominionCardTracker.IntegrationTests
         public void SelectViewTest()
         {
             var repo = new CardRepository();
-            var result = repo.SelectView(2);  // witch
+            var result = repo.SelectView(31);  // witch
 
             Assert.AreEqual(2, result.Categories.Count());
             Assert.AreEqual(2, result.Modifiers.Count());
@@ -34,13 +34,14 @@ namespace DominionCardTracker.IntegrationTests
             {
                 CardSetID = 1,
                 CardCost = 2,
-                CardTitle = "Estate",
-                ImagePath = "Estate.jpg"
+                CardTitle = "NewCard",
+                ImagePath = "NewCard.jpg"
             };
 
-            var result = repo.Insert(newCard);
+            repo.Insert(newCard);
+            var allCards = repo.SelectAll();
 
-            Assert.AreEqual(3, result.CardID);
+            Assert.IsNotNull(allCards.FirstOrDefault(c=>c.CardTitle=="NewCard"));
         }
 
         [Test]
@@ -49,7 +50,7 @@ namespace DominionCardTracker.IntegrationTests
             var repo = new CardRepository();
             var results = repo.SelectAll();
 
-            Assert.AreEqual(2, results.Count);
+            Assert.AreNotEqual(0, results.Count);
         }
 
         [Test]
@@ -72,10 +73,10 @@ namespace DominionCardTracker.IntegrationTests
         public void DeleteTest()
         {
             var repo = new CardRepository();
-            repo.Delete(2);
+            repo.Delete(1);
 
             var allSets = repo.SelectAll();
-            Assert.AreEqual(1, allSets.Count);
+            Assert.IsNull(allSets.FirstOrDefault(c=>c.CardID == 1));
         }
     }
 }

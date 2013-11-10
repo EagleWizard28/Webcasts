@@ -14,6 +14,7 @@ namespace DominionCardTracker.Models.Views
         public string CardTitle { get; set; }
         public string ImagePath { get; set; }
         public string CardSetName { get; set; }
+        public int CardCost { get; set; }
 
         public List<CardModifierView> Modifiers { get; set; }
         public List<Category> Categories { get; set; }
